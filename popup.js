@@ -25,6 +25,3 @@ function get(key){
 function $(id){
 	return document.getElementById(id);
 }
-chrome.extension.onMessage.addListener(function(){
-	return get("ban");
-})

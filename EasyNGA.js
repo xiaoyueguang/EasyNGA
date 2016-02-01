@@ -22,3 +22,7 @@ function addLoadEvent(func) {
 	}
 }
 addLoadEvent(EasyNGA);
+//	测试功能
+chrome.storage.local.get("test",function(val){
+	console.log(val);
+});
