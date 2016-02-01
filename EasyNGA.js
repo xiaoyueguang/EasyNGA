@@ -1,4 +1,4 @@
-function fuckNGA(){
+function EasyNGA(){
 	var loca = location.href;
 	//去除大漩涡版头
 	if(loca.indexOf("-7")>0){
@@ -21,8 +21,4 @@ function addLoadEvent(func) {
 		}
 	}
 }
-addLoadEvent(fuckNGA);
-
-chrome.extension.sendMessage("","fdsf",function(data){
-	console.log(data)
-});
+addLoadEvent(EasyNGA);
