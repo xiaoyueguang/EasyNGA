@@ -1,0 +1,25 @@
+{
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "EasyNGA.html",
+      "default_title": "正在开发"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "EasyNGA.js" ],
+      "matches": [ "http://*.ngacn.cc/*","http://*.bigccq.cn/*","http://*.nga.cn/*"	  ],
+      "run_at": "document_start"
+   } ],
+   "description": "使NGA界面变得更加简洁",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "48": "icon.png"
+   },
+   "manifest_version": 2,
+   "name": "Easy NGA!",
+   "options_page": "EasyNGA.html",
+   "version": "0.1",
+   "options_page":"options.html"
+
+}
