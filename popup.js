@@ -25,3 +25,4 @@ function get(key){
 function $(id){
 	return document.getElementById(id);
 }
+//	测试功能
