@@ -6,11 +6,25 @@ function(request, sender, sendResponse) {
 		var conf = request.conf;
 		sendResponse(localStorage[conf]);
 	}else if(request.type === "addshield"){
-		sendResponse(localStorage[]);
+		var obj = {
+			name:request.name,
+			uid:request.uid
+		},
+			result = addShield(obj);
+		sendResponse(result);
 	}
 	
 });
 
-function addShield(){
+function addShield(obj){
+	if(localStorage.shield === undefined){
+		localStorage.shield = "";
+	}
+	if(localStorage.shield.indexOf(JSON.stringify(obj)) === -1){
+		localStorage.shield += JSON.stringify(obj)+"^&*";
+		return "已添加";
+	}else{
+		return "已存在";
+	}
 	
 }

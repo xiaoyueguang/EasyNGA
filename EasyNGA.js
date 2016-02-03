@@ -69,12 +69,11 @@ function shieldBtnInit(){
 				name = a[0].innerHTML;
 				uid = a[0].href.substr(a[0].href.indexOf("uid=")+4);
 			}
-			chrome.runtime.sendMessage({type:"addshield"}, function(response) {
-				alert(response);
+			chrome.runtime.sendMessage({type:"addshield",uid:uid,name:name}, function(response) {
+				console.log(response);
 			});
 		};
 	}
 	
 }
 addLoadEvent(EasyNGA);
-//addLoadEvent(shieldBtnInit);
