@@ -22,9 +22,8 @@ function addShield(obj){
 	}
 	if(localStorage.shield.indexOf(JSON.stringify(obj)) === -1){
 		localStorage.shield += JSON.stringify(obj)+"^&*";
-		return "已添加";
+		return obj.name + "已添加到屏蔽菜单";
 	}else{
-		return "已存在";
+		return obj.name + "已存在";
 	}
-	
 }

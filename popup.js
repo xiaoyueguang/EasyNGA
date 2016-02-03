@@ -1,5 +1,6 @@
 window.onload = function(){
 	optionInit();
+	shieldInit();
 }
 
 $("submit").onclick = function(){
@@ -26,3 +27,16 @@ function $(id){
 	return document.getElementById(id);
 }
 //	测试功能
+function shieldInit(){
+	var elem,
+		elemnode,
+		shield = $("shield"),
+		shielddata = readShield();
+	
+	for(var i =0;i<shielddata.length;i++){
+		elem = document.createElement("li");
+		elemnode = document.createTextNode(shielddata[i].name);
+		elem.appendChild(elemnode);
+		shield.appendChild(elem);
+	}
+}
