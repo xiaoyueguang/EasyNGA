@@ -11,7 +11,10 @@ function(request, sender, sendResponse) {
 			uid:request.uid
 		},
 			result = addShield(obj);
+		
 		sendResponse(result);
+	}else if(request.type === "getshield"){
+		sendResponse(localStorage.shield);
 	}
 	
 });

@@ -12,10 +12,8 @@ getConfig("fen");
 function EasyNGA(){
 	var loca = location.href;
 	if(loca.indexOf("-7")>0){
-		//	去除大漩涡版头
-		if(config['ban'] == "true"){
-			document.getElementsByClassName("forumbox")[0].remove();
-		}
+		
+		
 		
 		//	去除大漩涡分版提示
 		if(config['fen'] == "true"){
@@ -28,6 +26,11 @@ function EasyNGA(){
 	}
 	if(loca.indexOf("tid") > "-1"){
 		shieldBtnInit();
+	}else{
+		//	去除大漩涡版头
+		if(config['ban'] == "true"){
+			document.getElementsByClassName("forumbox")[0].remove();
+		}
 	}
 }
 
@@ -69,10 +72,55 @@ function shieldBtnInit(){
 				uid = a[0].href.substr(a[0].href.indexOf("uid=")+4);
 			}
 			chrome.runtime.sendMessage({type:"addshield",uid:uid,name:name}, function(response) {
-				console.log(response);
+				alert(response);
 			});
 		};
 	}
 	
 }
+function shieldInit(){
+	var loca = location.href;
+	if(loca.indexOf("-7")>0){
+		
+	}
+	//	帖子详情 屏蔽
+	if(loca.indexOf("tid") > "-1"){
+		chrome.runtime.sendMessage({type:"getshield"}, function(response) {
+			var shield = response,
+				i,
+				author = document.getElementsByClassName("author"),
+				elem,
+				elemnode;
+			for(i=0;i<author.length;i++){
+				elem = author[i];
+				elemnode = elem.innerHTML;
+				if(shield.indexOf(elemnode)>0){
+					if(elem.parentNode.parentNode.tagName === "DIV"){
+						elem.parentNode.parentNode.remove();
+					}else{
+						elem.parentNode.parentNode.parentNode.parentNode.remove();
+					}
+				}
+			}
+		});
+	}
+	//	帖子列表 屏蔽
+	if(loca.indexOf("?fid=-7") > "-1"){
+		chrome.runtime.sendMessage({type:"getshield"}, function(response) {
+			var shield = response,
+				i,
+				author = document.getElementsByClassName("author"),
+				elem,
+				elemnode;
+			for(i=0;i<author.length;i++){
+				elem = author[i];
+				elemnode = elem.innerHTML;
+				if(shield.indexOf(elemnode)>0){
+					elem.parentNode.parentNode.parentNode.remove();
+				}
+			}
+		});
+	}
+}
 addLoadEvent(EasyNGA);
+addLoadEvent(shieldInit);
