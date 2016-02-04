@@ -27,3 +27,11 @@ function addShield(obj){
 		return obj.name + "已存在";
 	}
 }
+
+function readShield(){
+	var shieldarr = localStorage.shield.split("^&*");
+		shieldarr.pop();
+	return shieldarr.map(function(data){
+		return JSON.parse(data);
+	});
+}
