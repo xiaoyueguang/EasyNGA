@@ -12,23 +12,22 @@ getConfig("fen");
 function EasyNGA(){
 	var loca = location.href;
 	if(loca.indexOf("-7")>0){
-		if(loca.indexOf("tid") == "-1"){
-			//	去除大漩涡版头
-			if(config['ban'] == "true"){
-				document.getElementsByClassName("forumbox")[0].remove();
-			}
-			
-			//	去除大漩涡分版提示
-			if(config['fen'] == "true"){
-				var elems = document.getElementsByClassName("titleadd2"),
-					elemslength = elems.length;
-				for(var i =0;i<elemslength;i++){
-					elems[0].parentNode.parentNode.parentNode.remove();
-				}
-			}
-		}else{
-			shieldBtnInit();
+		//	去除大漩涡版头
+		if(config['ban'] == "true"){
+			document.getElementsByClassName("forumbox")[0].remove();
 		}
+		
+		//	去除大漩涡分版提示
+		if(config['fen'] == "true"){
+			var elems = document.getElementsByClassName("titleadd2"),
+				elemslength = elems.length;
+			for(var i =0;i<elemslength;i++){
+				elems[0].parentNode.parentNode.parentNode.remove();
+			}
+		}
+	}
+	if(loca.indexOf("tid") > "-1"){
+		shieldBtnInit();
 	}
 }
 

@@ -28,10 +28,36 @@ function addShield(obj){
 	}
 }
 
+//	返回 包含对象的数组
 function readShield(){
 	var shieldarr = localStorage.shield.split("^&*");
-		shieldarr.pop();
+	
+	shieldarr.pop();
 	return shieldarr.map(function(data){
 		return JSON.parse(data);
 	});
+}
+
+function delShield(id){
+	var shieldarr = localStorage.shield.split("^&*"),
+		index,
+		uid = parseInt(id);
+	shieldarr.pop();
+	shieldarr = shieldarr.map(function(data){
+		return JSON.parse(data);
+	});
+	for(var i = 0;i<shieldarr.length;i++){
+		if(parseInt(shieldarr[i].uid) === uid){
+			index = i;
+		}
+	}
+	if(index >= 0){
+		shieldarr.splice(index,1);
+	}
+	
+	shieldarr = shieldarr.map(function(data){
+		return JSON.stringify(data);
+	});
+	shieldarr.push("");
+	localStorage.shield = shieldarr.join("^&*");
 }

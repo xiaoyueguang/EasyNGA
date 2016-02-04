@@ -7,7 +7,8 @@
 			.content {width:1000px;margin:0 auto;font-size:24px;}
 			h1 {text-align:center;}
 			input[type='checkbox'] { width:30px;}
-			
+			#shield {max-height:400px;overflow-y:scroll;}
+			button {float:right;}
 		</style>
 	</head>
 	<body>
@@ -15,8 +16,12 @@
 			<h1>Easy NGA</h1>
 			<input type="checkbox" id="ban"/><label>是否屏蔽版头</label><br/>
 			<input type="checkbox" id="fen"/><label>是否屏蔽分版</label><br/>
+			<h3>屏蔽列表</h3>
+			<ul id="shield">
+			</ul>
 			<button id="submit">确定</button>
 		</div>
 	</body>
 	<script src="./popup.js"></script>
+	<script src="./background.js"></script>
 </html>

@@ -26,17 +26,32 @@ function get(key){
 function $(id){
 	return document.getElementById(id);
 }
-//	测试功能
+//	屏蔽菜单初始化
 function shieldInit(){
 	var elem,
 		elemnode,
+		button,
+		buttonnode,
 		shield = $("shield"),
 		shielddata = readShield();
-	
+		
 	for(var i =0;i<shielddata.length;i++){
+		var name = shielddata[i].name,
+			uid = shielddata[i].uid;
 		elem = document.createElement("li");
-		elemnode = document.createTextNode(shielddata[i].name);
+		elemnode = document.createTextNode(name);
+		button = document.createElement("button");
+		button.setAttribute("data-uid",uid);
+		buttonnode = document.createTextNode("删除");
+		
 		elem.appendChild(elemnode);
+		button.appendChild(buttonnode);
+		elem.appendChild(button);
+		button.onclick = function(){
+			var uid = this.getAttribute("data-uid");
+			delShield(uid);
+			location.reload();
+		}
 		shield.appendChild(elem);
 	}
 }
