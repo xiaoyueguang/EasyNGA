@@ -20,6 +20,9 @@
    "name": "Easy NGA!",
    "options_page": "EasyNGA.html",
    "version": "0.1",
-   "options_page":"options.html"
+   "options_page":"options.html",
+   "background":{
+		"scripts":["background.js"]
+   }
 
 }

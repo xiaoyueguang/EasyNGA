@@ -117,6 +117,7 @@ function shieldInit(){
 				elemnode = elem.innerHTML;
 				if(shield.indexOf(elemnode)>0){
 					elem.parentNode.parentNode.parentNode.remove();
+					console.log(elemnode + "已被屏蔽");
 				}
 			}
 		});
